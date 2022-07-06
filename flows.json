@@ -1,0 +1,546 @@
+[
+    {
+        "id": "376e5884131d9c60",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "074b9dc4138e55e2",
+        "type": "ui_gauge",
+        "z": "376e5884131d9c60",
+        "name": "",
+        "group": "19833b3a58387112",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Potenciometro",
+        "label": "",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "255",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 340,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "a7c9644521a48dae",
+        "type": "mqtt in",
+        "z": "376e5884131d9c60",
+        "name": "",
+        "topic": "Sensor",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "48254209efcd7e13",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 70,
+        "y": 280,
+        "wires": [
+            [
+                "074b9dc4138e55e2",
+                "5d23ed57c8036b06"
+            ]
+        ]
+    },
+    {
+        "id": "5d23ed57c8036b06",
+        "type": "ui_chart",
+        "z": "376e5884131d9c60",
+        "name": "",
+        "group": "d3c2cd09dde8f7f7",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Histórico dos Dados",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 340,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b783f1dc3a795e24",
+        "type": "ui_text",
+        "z": "376e5884131d9c60",
+        "group": "ae8c483a72422325",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Limite Global",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1250,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "30edafb5fc381628",
+        "type": "mqtt out",
+        "z": "376e5884131d9c60",
+        "name": "",
+        "topic": "Limite",
+        "qos": "1",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "48254209efcd7e13",
+        "x": 1210,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "c1666dd2c2e3d00d",
+        "type": "mqtt in",
+        "z": "376e5884131d9c60",
+        "name": "",
+        "topic": "Limite",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "48254209efcd7e13",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1010,
+        "y": 260,
+        "wires": [
+            [
+                "b783f1dc3a795e24"
+            ]
+        ]
+    },
+    {
+        "id": "be7830d3f7225932",
+        "type": "ui_slider",
+        "z": "376e5884131d9c60",
+        "name": "",
+        "label": "Limite para Atuação: ",
+        "tooltip": "",
+        "group": "ae8c483a72422325",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "limite",
+        "topicType": "msg",
+        "min": 0,
+        "max": "255",
+        "step": 1,
+        "className": "",
+        "x": 1040,
+        "y": 180,
+        "wires": [
+            [
+                "30edafb5fc381628"
+            ]
+        ]
+    },
+    {
+        "id": "e581b904e1698af9",
+        "type": "mqtt in",
+        "z": "376e5884131d9c60",
+        "name": "",
+        "topic": "Estado",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "48254209efcd7e13",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1030,
+        "y": 620,
+        "wires": [
+            [
+                "54903deaba003441"
+            ]
+        ]
+    },
+    {
+        "id": "54903deaba003441",
+        "type": "ui_text",
+        "z": "376e5884131d9c60",
+        "group": "ae8c483a72422325",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Estado do LED: ",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1200,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "dfcf5b80305930be",
+        "type": "mqtt out",
+        "z": "376e5884131d9c60",
+        "name": "",
+        "topic": "Ativacao",
+        "qos": "1",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "48254209efcd7e13",
+        "x": 1280,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "54a3bb9e0f268895",
+        "type": "mqtt out",
+        "z": "376e5884131d9c60",
+        "name": "",
+        "topic": "Estado",
+        "qos": "1",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "48254209efcd7e13",
+        "x": 1280,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "6729517b144ab29d",
+        "type": "ui_button",
+        "z": "376e5884131d9c60",
+        "name": "",
+        "group": "ae8c483a72422325",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Ligar LED",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 980,
+        "y": 400,
+        "wires": [
+            [
+                "dfcf5b80305930be",
+                "54a3bb9e0f268895"
+            ]
+        ]
+    },
+    {
+        "id": "995638886282c3a9",
+        "type": "ui_button",
+        "z": "376e5884131d9c60",
+        "name": "",
+        "group": "ae8c483a72422325",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Desligar LED",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "0",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 970,
+        "y": 460,
+        "wires": [
+            [
+                "dfcf5b80305930be",
+                "54a3bb9e0f268895"
+            ]
+        ]
+    },
+    {
+        "id": "eae22092246ca8ab",
+        "type": "exec",
+        "z": "376e5884131d9c60",
+        "command": "sudo python3 /home/ubuntu/.node-red/backpy/back.py",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "true",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 400,
+        "y": 620,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "0225ee1d0d62147c",
+        "type": "inject",
+        "z": "376e5884131d9c60",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 620,
+        "wires": [
+            [
+                "eae22092246ca8ab"
+            ]
+        ]
+    },
+    {
+        "id": "01b9446cd0bc1075",
+        "type": "file in",
+        "z": "376e5884131d9c60",
+        "name": "",
+        "filename": "",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 480,
+        "y": 460,
+        "wires": [
+            [
+                "16811ae8d4e6249d"
+            ]
+        ]
+    },
+    {
+        "id": "ea7e6a1d966fd3d1",
+        "type": "ui_text_input",
+        "z": "376e5884131d9c60",
+        "name": "",
+        "label": "Data do Log desejado:",
+        "tooltip": "",
+        "group": "19833b3a58387112",
+        "order": 2,
+        "width": "0",
+        "height": "0",
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "payload",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 100,
+        "y": 460,
+        "wires": [
+            [
+                "86b877aea62df18c"
+            ]
+        ]
+    },
+    {
+        "id": "16811ae8d4e6249d",
+        "type": "ui_text",
+        "z": "376e5884131d9c60",
+        "group": "182af1d55f3ba3ba",
+        "order": 1,
+        "width": "20",
+        "height": "15",
+        "name": "",
+        "label": "Log Desejado:",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "log",
+        "x": 680,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "86b877aea62df18c",
+        "type": "function",
+        "z": "376e5884131d9c60",
+        "name": "",
+        "func": "let num1 = msg.payload;\nlet num2 = '.txt';\nlet num3 = '/home/ubuntu/.node-red/backpy/' + num1 + num2;\n\nmsg.filename = num3;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 460,
+        "wires": [
+            [
+                "01b9446cd0bc1075"
+            ]
+        ]
+    },
+    {
+        "id": "e1db253166357907",
+        "type": "ui_spacer",
+        "z": "376e5884131d9c60",
+        "name": "spacer",
+        "group": "19833b3a58387112",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "19833b3a58387112",
+        "type": "ui_group",
+        "name": "Group 1",
+        "tab": "619c9fa75dc9b389",
+        "order": 1,
+        "disp": false,
+        "width": 10,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "48254209efcd7e13",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "jackal.rmq.cloudamqp.com",
+        "port": "1883",
+        "clientid": "aplicacaoWeb",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "d3c2cd09dde8f7f7",
+        "type": "ui_group",
+        "name": "Group 3",
+        "tab": "619c9fa75dc9b389",
+        "order": 3,
+        "disp": false,
+        "width": "10",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ae8c483a72422325",
+        "type": "ui_group",
+        "name": "Group 2",
+        "tab": "619c9fa75dc9b389",
+        "order": 2,
+        "disp": false,
+        "width": 10,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "182af1d55f3ba3ba",
+        "type": "ui_group",
+        "name": "Group 1",
+        "tab": "315b5043a7ad0283",
+        "order": 1,
+        "disp": false,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "619c9fa75dc9b389",
+        "type": "ui_tab",
+        "name": "Exibição de Dados e Limite",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "315b5043a7ad0283",
+        "type": "ui_tab",
+        "name": "Dados Requisitados",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]
