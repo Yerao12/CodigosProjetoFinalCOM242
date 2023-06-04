@@ -1,4 +1,4 @@
-r c#include <ESP8266WiFi.h>
+#include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 
 #define pinoPOT A0
